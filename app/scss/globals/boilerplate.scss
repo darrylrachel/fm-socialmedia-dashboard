@@ -1,0 +1,13 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box; 
+  // ^ ^ Combines width of element and padding for example as total width and not as add-on width
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter);
+}
