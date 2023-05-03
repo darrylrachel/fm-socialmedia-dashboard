@@ -1,11 +1,83 @@
 @use '../util/' as *;
 
+// https://codepen.io/SaraSoueidan/pen/jpBbrq/
 .toggle {
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr rem(60) 1fr; //repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: rem(4.8) rem(8);
+  border: none;
+  margin: 0;
+
+  label {
+    font-size: rem(14);
+  }
+
+  &__wrapper {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    height: rem(24);
+    position: relative;
+  }
+
+  input[type='radio'] {
+    opacity: 0;
+    margin: 0 rem(-2) 0 rem(-2);
+    width: rem(20);
+    height: rem(24);
+
+    &:focu ~ .toggle__button {
+      border: 2px solid white;
+    }
+  }
+
+  &__background {
+    border-radius: rem(12);
+    display: block;
+    height: 100%;
+    background: linear-gradient(
+      225deg,
+      var(--toggle-end) 0%,
+      var(--toggle-start) 98.02%
+    );
+    position: absolute;
+    width: 100%;
+    top: 0;
+    pointer-events: none;
+  }
 
   &__button {
-    width: rem(16);
-    height: rem(16);
-    background-color: var(--toggle);
+    width: rem(18);
+    height: rem(18);
+    // background-color: var(--toggle);
     border-radius: 50%;
+    position: absolute;
+    left: rem(3);
+    right: 100%;
+    top: rem(3);
+    background-color: var(--dark-bg);
+    transition: all 190ms ease-in-out;
+  }
+
+  #light:checked ~ .toggle__button {
+    left: calc(100% - 21px);
+    right: 3px;
+  }
+
+  label {
+
+    &[for="dark"] {
+      grid-column: 1 / 2;
+      justify-self: end;
+    }
+    &[for="system"] {
+      grid-column: 2 / 4;
+      grid-row: 2 / 3;
+      justify-self: center;
+    }
+    &[for="light"] {
+      grid-column: 3 / 4;
+    }
   }
 }

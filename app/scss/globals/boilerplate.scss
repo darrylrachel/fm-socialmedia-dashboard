@@ -7,7 +7,9 @@ html {
   box-sizing: inherit;
 }
 body {
+  background: var(--dark-bg);
+  color: var(--dark-mode-text);
+  font-family: var(--font-inter);
   margin: 0;
   padding: 0;
-  font-family: var(--font-inter);
 }
