@@ -1,5 +1,6 @@
 // Initialize modules
 const { src, dest, watch, series } = require('gulp');
+//const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -22,15 +23,23 @@ function scssTask() {
 // Javascript Task
 function jsTask() {
   return src('app/js/script.js', { sourcemaps: true })
-  .pipe(babel({ preset: ['@babel/preset-env'] }))
+  .pipe(babel({ presets: ['@babel/preset-env']}))
   .pipe(terser())
   .pipe(dest('dist', { sourcemaps: '.' }));
 }
 
+// gulp.task('default', () =>
+// 	gulp.src('src/app.js')
+// 		.pipe(babel({
+// 			presets: ['@babel/preset-env']
+// 		}))
+// 		.pipe(gulp.dest('dist'))
+// );
+
 // BrowserSync
 function browserSyncServe(cb) {
   browsersync.init ({
-    serve: {
+    server: {
       baseDir: '.',
     },
     notify: {
